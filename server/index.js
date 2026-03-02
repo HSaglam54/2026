@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -7,8 +6,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.use('/api', require('./routes/routes'));
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
