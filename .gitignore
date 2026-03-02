@@ -18,3 +18,5 @@ __pycache__/
 # Sensitive data
 .env
 .DS_Store
+build/
+package-lock.json
