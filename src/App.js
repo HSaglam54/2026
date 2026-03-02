@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+import './App.css';
 import Sidebar from './Sidebar';
 import Dashboard from './Dashboard';
 import Standorte from './Standorte';
@@ -9,22 +9,34 @@ import Berichte from './Berichte';
 import Benutzer from './Benutzer';
 
 const App = () => {
+    const [currentPage, setCurrentPage] = useState('dashboard');
+
+    const renderPage = () => {
+        switch (currentPage) {
+            case 'dashboard':
+                return <Dashboard />;
+            case 'standorte':
+                return <Standorte />;
+            case 'geraete':
+                return <Geraete />;
+            case 'wartung':
+                return <Wartung />;
+            case 'berichte':
+                return <Berichte />;
+            case 'benutzer':
+                return <Benutzer />;
+            default:
+                return <Dashboard />;
+        }
+    };
+
     return (
-        <Router>
-            <div className="app">
-                <Sidebar />
-                <div className="content">
-                    <Switch>
-                        <Route path="/" exact component={Dashboard} />
-                        <Route path="/standorte" component={Standorte} />
-                        <Route path="/geraete" component={Geraete} />
-                        <Route path="/wartung" component={Wartung} />
-                        <Route path="/berichte" component={Berichte} />
-                        <Route path="/benutzer" component={Benutzer} />
-                    </Switch>
-                </div>
+        <div className="app">
+            <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <div className="content">
+                {renderPage()}
             </div>
-        </Router>
+        </div>
     );
 };
 
