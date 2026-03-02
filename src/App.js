@@ -1,31 +1,54 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import Dashboard from './Dashboard';
-import Standorte from './Standorte';
-import Geraete from './Geraete';
-import Wartung from './Wartung';
-import Berichte from './Berichte';
-import Benutzer from './Benutzer';
+import React, { useState } from 'react';
+import './App.css';
+import Dashboard from './pages/Dashboard';
+import Standorte from './pages/Standorte';
+import Geraete from './pages/Geraete';
+import Wartung from './pages/Wartung';
+import Berichte from './pages/Berichte';
+import Benutzer from './pages/Benutzer';
 
-const App = () => {
-    return (
-        <Router>
-            <div className="app">
-                <Sidebar />
-                <div className="content">
-                    <Switch>
-                        <Route path="/" exact component={Dashboard} />
-                        <Route path="/standorte" component={Standorte} />
-                        <Route path="/geraete" component={Geraete} />
-                        <Route path="/wartung" component={Wartung} />
-                        <Route path="/berichte" component={Berichte} />
-                        <Route path="/benutzer" component={Benutzer} />
-                    </Switch>
-                </div>
-            </div>
-        </Router>
-    );
+const navItems = [
+  { id: 'dashboard', label: '📊 Dashboard' },
+  { id: 'standorte', label: '📍 Standorte' },
+  { id: 'geraete', label: '❄️ Geräte' },
+  { id: 'wartung', label: '🔧 Wartung' },
+  { id: 'berichte', label: '📁 Berichte' },
+  { id: 'benutzer', label: '👤 Benutzer' },
+];
+
+const pages = {
+  dashboard: <Dashboard />,
+  standorte: <Standorte />,
+  geraete: <Geraete />,
+  wartung: <Wartung />,
+  berichte: <Berichte />,
+  benutzer: <Benutzer />,
 };
 
-export default App;
+export default function App() {
+  const [activePage, setActivePage] = useState('dashboard');
+
+  return (
+    <div className="app-layout">
+      <aside className="sidebar">
+        <div className="sidebar-logo">
+          <span>❄️ KälteManager</span>
+        </div>
+        <nav className="sidebar-nav">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={`nav-item${activePage === item.id ? ' active' : ''}`}
+              onClick={() => setActivePage(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
+      </aside>
+      <main className="main-content">
+        {pages[activePage]}
+      </main>
+    </div>
+  );
+}
