@@ -1,0 +1,393 @@
+/* ==========================================
+   App Layout
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   Sidebar Styling (Dunkelblaue #003d7a)
+   ========================================== */
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background-color: #003d7a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-header {
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    flex: 1;
+}
+
+.nav-button {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.nav-button.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-left: 3px solid #4da6ff;
+    font-weight: 600;
+}
+
+/* ==========================================
+   Header Styling
+   ========================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003d7a;
+    color: #fff;
+    padding: 14px 24px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.app-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   Content Styling
+   ========================================== */
+.content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.page-container {
+    max-width: 1200px;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #003d7a;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #003d7a;
+}
+
+/* ==========================================
+   Card Styling
+   ========================================== */
+.kpi-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    flex: 1;
+    min-width: 180px;
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kpi-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #003d7a;
+}
+
+/* ==========================================
+   Chart Styling
+   ========================================== */
+.chart-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.chart-container h2 {
+    font-size: 1.1rem;
+    color: #003d7a;
+    margin-bottom: 20px;
+}
+
+.chart-bar-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    height: 160px;
+    padding: 10px 0 0 0;
+}
+
+.chart-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.chart-bar {
+    width: 100%;
+    max-width: 50px;
+    background-color: #003d7a;
+    border-radius: 4px 4px 0 0;
+    transition: background-color 0.2s;
+}
+
+.chart-bar:hover {
+    background-color: #0056b3;
+}
+
+.chart-label {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ==========================================
+   Button Styling
+   ========================================== */
+.button {
+    background-color: #003d7a;
+    border: none;
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-block;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.berichte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.bericht-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.bericht-card p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   Table Styling
+   ========================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background-color: #003d7a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table tbody tr:hover {
+    background-color: #f5f8ff;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================
+   Status Badge Styling
+   ========================================== */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-aktiv {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-inaktiv {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-wartung {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-in-bearbeitung {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 8px;
+    }
+
+    .nav-button {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+
+    .nav-button.active {
+        border-left: none;
+        border-bottom: 3px solid #4da6ff;
+    }
+
+    .content {
+        padding: 16px;
+    }
+
+    .kpi-cards {
+        gap: 12px;
+    }
+
+    .card {
+        min-width: 140px;
+    }
+
+    .kpi-value {
+        font-size: 1.6rem;
+    }
+
+    .berichte-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-nav {
+        overflow-x: auto;
+    }
+
+    .nav-button {
+        min-width: 100px;
+    }
+
+    .kpi-cards {
+        flex-direction: column;
+    }
+
+    table th,
+    table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
